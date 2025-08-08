@@ -23,11 +23,13 @@
 ## 開始使用
 
 1. 安裝依賴：
+
 ```bash
 npm install
 ```
 
 2. 啟動開發伺服器：
+
 ```bash
 npm run dev
 ```

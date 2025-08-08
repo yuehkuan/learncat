@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Layout from "@/components/Layout";
 import { usePayment } from "@/contexts/PaymentContext";
@@ -16,7 +21,7 @@ import {
   Award,
   Globe,
   Heart,
-  ShoppingCart
+  ShoppingCart,
 } from "lucide-react";
 
 export default function Index() {
@@ -30,13 +35,13 @@ export default function Index() {
       price: course.price,
       image: course.image,
       instructor: course.instructor,
-      quantity: 1
+      quantity: 1,
     });
-    showAlert('課程已加入購物車！', 'success');
+    showAlert("課程已加入購物車！", "success");
   };
 
   const handleAddToWishlist = (course: any) => {
-    showAlert('課程已加入追蹤！', 'success');
+    showAlert("課程已加入追蹤！", "success");
   };
 
   // 模擬課程資料
@@ -49,10 +54,11 @@ export default function Index() {
       students: 15420,
       price: 1899,
       originalPrice: 2999,
-      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=300&h=200&fit=crop",
       category: "程式設計",
       level: "中級",
-      duration: "24小時"
+      duration: "24小時",
     },
     {
       id: 2,
@@ -62,10 +68,11 @@ export default function Index() {
       students: 8750,
       price: 1499,
       originalPrice: 2299,
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=300&h=200&fit=crop",
       category: "設計創作",
       level: "初級",
-      duration: "18小時"
+      duration: "18小時",
     },
     {
       id: 3,
@@ -75,10 +82,11 @@ export default function Index() {
       students: 12300,
       price: 2199,
       originalPrice: 3299,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop",
       category: "資料科學",
       level: "中級",
-      duration: "32小時"
+      duration: "32小時",
     },
     {
       id: 4,
@@ -88,11 +96,12 @@ export default function Index() {
       students: 6850,
       price: 1699,
       originalPrice: 2499,
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop",
       category: "商業管理",
       level: "高級",
-      duration: "16小時"
-    }
+      duration: "16小時",
+    },
   ];
 
   const categories = [
@@ -101,7 +110,7 @@ export default function Index() {
     { name: "商業管理", count: 650, icon: "📊" },
     { name: "語言學習", count: 420, icon: "🌍" },
     { name: "資料科學", count: 380, icon: "📈" },
-    { name: "行銷企劃", count: 320, icon: "📊" }
+    { name: "行銷企劃", count: 320, icon: "📊" },
   ];
 
   return (
@@ -120,16 +129,25 @@ export default function Index() {
                   </span>
                 </h1>
                 <p className="text-xl text-primary-foreground/90 max-w-2xl">
-                  超過 10,000 門優質課程，由頂尖講師親自授課。無論你想學習什麼，我們都有適合的課程等著你。
+                  超過 10,000
+                  門優質課程，由頂尖講師親自授課。無論你想學習什麼，我們都有適合的課程等著你。
                 </p>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="secondary" className="text-lg px-8 py-6">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="text-lg px-8 py-6"
+                >
                   開始探索課程
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="secondary" className="text-lg px-8 py-6 bg-white text-black hover:bg-gray-100">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="text-lg px-8 py-6 bg-white text-black hover:bg-gray-100"
+                >
                   觀看介紹影片
                   <Play className="ml-2 h-5 w-5" />
                 </Button>
@@ -154,9 +172,9 @@ export default function Index() {
 
             <div className="relative">
               <div className="relative z-10">
-                <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" 
-                  alt="學習情境" 
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
+                  alt="學習情境"
                   className="rounded-2xl shadow-2xl"
                 />
               </div>
@@ -171,7 +189,9 @@ export default function Index() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">精選熱門課程</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              精選熱門課程
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               從數千門課程中精心挑選，這些是學員評價最高、最受歡迎的課程
             </p>
@@ -179,18 +199,24 @@ export default function Index() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {featuredCourses.map((course) => (
-              <Card key={course.id} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md">
+              <Card
+                key={course.id}
+                className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md"
+              >
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <img 
-                      src={course.image} 
+                    <img
+                      src={course.image}
                       alt={course.title}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
                       {course.category}
                     </Badge>
-                    <Badge variant="secondary" className="absolute top-3 right-3">
+                    <Badge
+                      variant="secondary"
+                      className="absolute top-3 right-3"
+                    >
                       {course.level}
                     </Badge>
                   </div>
@@ -199,8 +225,10 @@ export default function Index() {
                   <h3 className="font-semibold text-lg mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                     {course.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-3">by {course.instructor}</p>
-                  
+                  <p className="text-sm text-muted-foreground mb-3">
+                    by {course.instructor}
+                  </p>
+
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                     <div className="flex items-center gap-1">
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -215,7 +243,7 @@ export default function Index() {
                       <span>{course.duration}</span>
                     </div>
                   </div>
-                  
+
                   <div className="mb-3">
                     <div className="flex items-center gap-2">
                       <span className="text-lg font-bold text-primary">
@@ -273,7 +301,9 @@ export default function Index() {
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">熱門學習分類</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              熱門學習分類
+            </h2>
             <p className="text-lg text-muted-foreground">
               探索各種專業領域，找到最適合你的學習方向
             </p>
@@ -281,7 +311,7 @@ export default function Index() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {categories.map((category) => (
-              <Link 
+              <Link
                 key={category.name}
                 to={`/courses/${category.name.toLowerCase()}`}
                 className="group"
@@ -305,7 +335,9 @@ export default function Index() {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">為什麼選擇學習無界？</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              為什麼選擇學習無界？
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               我們提供完整的學習生態系統，讓你的學習之路更加順暢
             </p>
@@ -365,10 +397,20 @@ export default function Index() {
             加入超過 50 萬名學員的行列，開始你的技能提升之路
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6" asChild>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="text-lg px-8 py-6"
+              asChild
+            >
               <Link to="/register">免費註冊</Link>
             </Button>
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-6 bg-white text-black hover:bg-gray-100" asChild>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="text-lg px-8 py-6 bg-white text-black hover:bg-gray-100"
+              asChild
+            >
               <Link to="/create-course">我要開課</Link>
             </Button>
           </div>

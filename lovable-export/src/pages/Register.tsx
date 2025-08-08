@@ -16,12 +16,12 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     const success = await register(email, password, name);
     if (success) {
       navigate("/");
     }
-    
+
     setIsLoading(false);
   };
 
@@ -70,7 +70,10 @@ export default function Register() {
             </form>
             <div className="text-center mt-4">
               <p className="text-sm text-muted-foreground">
-                已有帳號？ <Link to="/login" className="text-primary hover:underline">登入</Link>
+                已有帳號？{" "}
+                <Link to="/login" className="text-primary hover:underline">
+                  登入
+                </Link>
               </p>
             </div>
           </CardContent>

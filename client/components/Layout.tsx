@@ -12,7 +12,7 @@ import {
   Menu,
   Bell,
   LogOut,
-  Settings
+  Settings,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
@@ -41,21 +41,21 @@ export default function Layout({ children }: LayoutProps) {
 
   const handleCreateCourse = () => {
     if (!user) {
-      navigate('/login', { state: { from: { pathname: '/create-course' } } });
+      navigate("/login", { state: { from: { pathname: "/create-course" } } });
       return;
     }
 
     if (!user.isEmailVerified) {
-      navigate('/verify-email');
+      navigate("/verify-email");
       return;
     }
 
-    navigate('/create-course');
+    navigate("/create-course");
   };
 
   const handleLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -86,20 +86,24 @@ export default function Layout({ children }: LayoutProps) {
 
             {/* Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
-              <Link 
-                to="/courses" 
+              <Link
+                to="/courses"
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
-                  isActive("/courses") ? "text-primary" : "text-muted-foreground"
+                  isActive("/courses")
+                    ? "text-primary"
+                    : "text-muted-foreground",
                 )}
               >
                 探索課程
               </Link>
-              <Link 
-                to="/community" 
+              <Link
+                to="/community"
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
-                  isActive("/community") ? "text-primary" : "text-muted-foreground"
+                  isActive("/community")
+                    ? "text-primary"
+                    : "text-muted-foreground",
                 )}
               >
                 學習社群
@@ -117,7 +121,11 @@ export default function Layout({ children }: LayoutProps) {
               {user && (
                 <>
                   {/* Wishlist */}
-                  <Button variant="ghost" size="icon" className="hidden md:flex">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hidden md:flex"
+                  >
                     <Heart className="h-5 w-5" />
                   </Button>
 
@@ -127,7 +135,11 @@ export default function Layout({ children }: LayoutProps) {
                   </div>
 
                   {/* Notifications */}
-                  <Button variant="ghost" size="icon" className="hidden md:flex">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="hidden md:flex"
+                  >
                     <Bell className="h-5 w-5" />
                   </Button>
                 </>
@@ -137,7 +149,10 @@ export default function Layout({ children }: LayoutProps) {
               {user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                    <Button
+                      variant="ghost"
+                      className="relative h-8 w-8 rounded-full"
+                    >
                       <Avatar className="h-8 w-8">
                         <AvatarImage src={user.avatar} alt={user.name} />
                         <AvatarFallback className="bg-primary text-primary-foreground">
@@ -148,7 +163,9 @@ export default function Layout({ children }: LayoutProps) {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56" align="end" forceMount>
                     <div className="flex flex-col space-y-1 p-2">
-                      <p className="text-sm font-medium leading-none">{user.name}</p>
+                      <p className="text-sm font-medium leading-none">
+                        {user.name}
+                      </p>
                       <p className="text-xs leading-none text-muted-foreground">
                         {user.email}
                       </p>
@@ -174,7 +191,10 @@ export default function Layout({ children }: LayoutProps) {
                         我的課程
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={handleCreateCourse} className="cursor-pointer">
+                    <DropdownMenuItem
+                      onClick={handleCreateCourse}
+                      className="cursor-pointer"
+                    >
                       <GraduationCap className="mr-2 h-4 w-4" />
                       我要開課
                     </DropdownMenuItem>
@@ -185,7 +205,10 @@ export default function Layout({ children }: LayoutProps) {
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+                    <DropdownMenuItem
+                      onClick={handleLogout}
+                      className="cursor-pointer"
+                    >
                       <LogOut className="mr-2 h-4 w-4" />
                       登出
                     </DropdownMenuItem>
@@ -212,9 +235,7 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer */}
       <footer className="border-t bg-background">
@@ -241,22 +262,34 @@ export default function Layout({ children }: LayoutProps) {
               <h3 className="font-semibold mb-4">快速連結</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link to="/courses" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/courses"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     探索課程
                   </Link>
                 </li>
                 <li>
-                  <Link to="/community" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/community"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     學習社群
                   </Link>
                 </li>
                 <li>
-                  <Link to="/teach" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/teach"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     開始教學
                   </Link>
                 </li>
                 <li>
-                  <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/about"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     關於我們
                   </Link>
                 </li>
@@ -268,22 +301,34 @@ export default function Layout({ children }: LayoutProps) {
               <h3 className="font-semibold mb-4">熱門分類</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link to="/courses/programming" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/courses/programming"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     程式設計
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses/design" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/courses/design"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     設計創作
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses/business" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/courses/business"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     商業管理
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses/language" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/courses/language"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     語言學習
                   </Link>
                 </li>
@@ -295,22 +340,34 @@ export default function Layout({ children }: LayoutProps) {
               <h3 className="font-semibold mb-4">幫助與支援</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link to="/help" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/help"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     幫助中心
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/contact"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     聯絡我們
                   </Link>
                 </li>
                 <li>
-                  <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/privacy"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     隱私政策
                   </Link>
                 </li>
                 <li>
-                  <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    to="/terms"
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
                     服務條款
                   </Link>
                 </li>

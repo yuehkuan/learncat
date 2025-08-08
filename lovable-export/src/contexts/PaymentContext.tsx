@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 interface CartItem {
   id: string;
@@ -23,24 +23,29 @@ const PaymentContext = createContext<PaymentContextType | null>(null);
 export const usePayment = () => {
   const context = useContext(PaymentContext);
   if (!context) {
-    throw new Error('usePayment must be used within a PaymentProvider');
+    throw new Error("usePayment must be used within a PaymentProvider");
   }
   return context;
 };
 
-export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const cartTotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
 
   const addToCart = (item: CartItem) => {
-    setCartItems(prev => {
-      const existing = prev.find(cartItem => cartItem.id === item.id);
+    setCartItems((prev) => {
+      const existing = prev.find((cartItem) => cartItem.id === item.id);
       if (existing) {
-        return prev.map(cartItem =>
+        return prev.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
+            : cartItem,
         );
       }
       return [...prev, item];
@@ -48,7 +53,7 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   const removeFromCart = (id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
   const updateQuantity = (id: string, quantity: number) => {
@@ -56,10 +61,8 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({ child
       removeFromCart(id);
       return;
     }
-    setCartItems(prev =>
-      prev.map(item =>
-        item.id === id ? { ...item, quantity } : item
-      )
+    setCartItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
     );
   };
 
@@ -68,14 +71,16 @@ export const PaymentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   };
 
   return (
-    <PaymentContext.Provider value={{
-      cartItems,
-      cartTotal,
-      addToCart,
-      removeFromCart,
-      updateQuantity,
-      clearCart
-    }}>
+    <PaymentContext.Provider
+      value={{
+        cartItems,
+        cartTotal,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+      }}
+    >
       {children}
     </PaymentContext.Provider>
   );

@@ -1,11 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface User {
   id: string;
   email: string;
   name: string;
   isEmailVerified: boolean;
-  role: 'student' | 'instructor';
+  role: "student" | "instructor";
   avatar?: string;
   bio?: string;
   interests?: string[];
@@ -27,22 +27,24 @@ const AuthContext = createContext<AuthContextType | null>(null);
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
       try {
         setUser(JSON.parse(storedUser));
       } catch (error) {
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
       }
     }
     setIsLoading(false);
@@ -53,14 +55,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       // 模擬登入邏輯
       const mockUser: User = {
-        id: '1',
+        id: "1",
         email,
-        name: email.split('@')[0],
+        name: email.split("@")[0],
         isEmailVerified: true,
-        role: 'student'
+        role: "student",
       };
       setUser(mockUser);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      localStorage.setItem("user", JSON.stringify(mockUser));
       return true;
     } catch (error) {
       return false;
@@ -69,18 +71,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
-  const register = async (email: string, password: string, name: string): Promise<boolean> => {
+  const register = async (
+    email: string,
+    password: string,
+    name: string,
+  ): Promise<boolean> => {
     setIsLoading(true);
     try {
       const mockUser: User = {
-        id: '1',
+        id: "1",
         email,
         name,
         isEmailVerified: false,
-        role: 'student'
+        role: "student",
       };
       setUser(mockUser);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      localStorage.setItem("user", JSON.stringify(mockUser));
       return true;
     } catch (error) {
       return false;
@@ -91,14 +97,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   };
 
   const verifyEmail = async (token: string): Promise<boolean> => {
     if (user) {
       const updatedUser = { ...user, isEmailVerified: true };
       setUser(updatedUser);
-      localStorage.setItem('user', JSON.stringify(updatedUser));
+      localStorage.setItem("user", JSON.stringify(updatedUser));
       return true;
     }
     return false;
@@ -112,21 +118,23 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (user) {
       const updatedUser = { ...user, ...userData };
       setUser(updatedUser);
-      localStorage.setItem('user', JSON.stringify(updatedUser));
+      localStorage.setItem("user", JSON.stringify(updatedUser));
     }
   };
 
   return (
-    <AuthContext.Provider value={{
-      user,
-      isLoading,
-      login,
-      register,
-      logout,
-      verifyEmail,
-      resendVerification,
-      updateUser
-    }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        isLoading,
+        login,
+        register,
+        logout,
+        verifyEmail,
+        resendVerification,
+        updateUser,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

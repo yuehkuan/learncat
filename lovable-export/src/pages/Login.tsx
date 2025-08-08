@@ -15,12 +15,12 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     const success = await login(email, password);
     if (success) {
       navigate("/");
     }
-    
+
     setIsLoading(false);
   };
 
@@ -59,7 +59,10 @@ export default function Login() {
             </form>
             <div className="text-center mt-4">
               <p className="text-sm text-muted-foreground">
-                還沒有帳號？ <Link to="/register" className="text-primary hover:underline">註冊</Link>
+                還沒有帳號？{" "}
+                <Link to="/register" className="text-primary hover:underline">
+                  註冊
+                </Link>
               </p>
             </div>
           </CardContent>
