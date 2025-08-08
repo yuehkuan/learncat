@@ -18,8 +18,6 @@ import {
   Play,
   Clock,
   ArrowRight,
-  CheckCircle,
-  TrendingUp,
   Award,
   Globe,
   Heart,
@@ -195,7 +193,7 @@ export default function Index() {
               精選熱門課程
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              從數千門課程中精心挑選，這些是學員���價最高、最受歡迎的課程
+              從數千門課程中精心挑選，這些是學員評價最高、最受歡迎的課程
             </p>
           </div>
 
@@ -245,7 +243,7 @@ export default function Index() {
                       <span>{course.duration}</span>
                     </div>
                   </div>
-                  {/* 價格區域往上移 */}
+
                   <div className="mb-3">
                     <div className="flex items-center gap-2">
                       <span className="text-lg font-bold text-primary">
@@ -258,7 +256,6 @@ export default function Index() {
                   </div>
                 </CardContent>
                 <CardFooter className="p-4 pt-0">
-                  {/* 按鈕區域 */}
                   <div className="flex flex-col gap-2 w-full">
                     <div className="flex gap-2">
                       <Link to={`/courses/${course.id}`} className="flex-1">
@@ -351,7 +348,7 @@ export default function Index() {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Trophy className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">��尖講師</h3>
+              <h3 className="text-xl font-semibold mb-2">頂尖講師</h3>
               <p className="text-muted-foreground">
                 來自業界的專家講解，分享實戰經驗與最新知識
               </p>

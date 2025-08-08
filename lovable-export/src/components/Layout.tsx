@@ -6,25 +6,14 @@ import {
   Search,
   User,
   Heart,
-  ShoppingCart,
-  Users,
-  GraduationCap,
-  Menu,
   Bell,
   LogOut,
   Settings,
+  GraduationCap,
+  Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import CartDropdown from "./CartDropdown";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -44,12 +33,6 @@ export default function Layout({ children }: LayoutProps) {
       navigate("/login", { state: { from: { pathname: "/create-course" } } });
       return;
     }
-
-    if (!user.isEmailVerified) {
-      navigate("/verify-email");
-      return;
-    }
-
     navigate("/create-course");
   };
 
@@ -129,11 +112,6 @@ export default function Layout({ children }: LayoutProps) {
                     <Heart className="h-5 w-5" />
                   </Button>
 
-                  {/* Cart */}
-                  <div className="hidden md:flex">
-                    <CartDropdown />
-                  </div>
-
                   {/* Notifications */}
                   <Button
                     variant="ghost"
@@ -147,80 +125,19 @@ export default function Layout({ children }: LayoutProps) {
 
               {/* User Menu */}
               {user ? (
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="relative h-8 w-8 rounded-full"
-                    >
-                      <Avatar className="h-8 w-8">
-                        <AvatarImage src={user.avatar} alt={user.name} />
-                        <AvatarFallback className="bg-primary text-primary-foreground">
-                          {user.name.charAt(0).toUpperCase()}
-                        </AvatarFallback>
-                      </Avatar>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-56" align="end" forceMount>
-                    <div className="flex flex-col space-y-1 p-2">
-                      <p className="text-sm font-medium leading-none">
-                        {user.name}
-                      </p>
-                      <p className="text-xs leading-none text-muted-foreground">
-                        {user.email}
-                      </p>
-                      {!user.isEmailVerified && (
-                        <Link
-                          to="/verify-email"
-                          className="text-xs text-warning hover:underline"
-                        >
-                          驗證Email
-                        </Link>
-                      )}
-                    </div>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild>
-                      <Link to="/profile" className="cursor-pointer">
-                        <User className="mr-2 h-4 w-4" />
-                        個人資料
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/courses/purchased" className="cursor-pointer">
-                        <BookOpen className="mr-2 h-4 w-4" />
-                        我的課程
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={handleCreateCourse}
-                      className="cursor-pointer"
-                    >
-                      <GraduationCap className="mr-2 h-4 w-4" />
-                      我要開課
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link to="/settings" className="cursor-pointer">
-                        <Settings className="mr-2 h-4 w-4" />
-                        設定
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={handleLogout}
-                      className="cursor-pointer"
-                    >
-                      <LogOut className="mr-2 h-4 w-4" />
-                      登出
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                <div className="flex items-center space-x-2">
+                  <span className="text-sm font-medium">{user.name}</span>
+                  <Button variant="ghost" size="icon" onClick={handleLogout}>
+                    <LogOut className="h-4 w-4" />
+                  </Button>
+                </div>
               ) : (
                 <div className="flex items-center space-x-2">
                   <Button variant="outline" size="sm" asChild>
                     <Link to="/login">登入</Link>
                   </Button>
                   <Button size="sm" asChild>
-                    <Link to="/register">���冊</Link>
+                    <Link to="/register">註冊</Link>
                   </Button>
                 </div>
               )}
