@@ -103,7 +103,7 @@ export default function Index() {
     { name: "商業管理", count: 650, icon: "📊" },
     { name: "語言學習", count: 420, icon: "🌍" },
     { name: "資料科學", count: 380, icon: "📈" },
-    { name: "行銷企劃", count: 320, icon: "����" }
+    { name: "行銷企劃", count: 320, icon: "📊" }
   ];
 
   return (
@@ -175,7 +175,7 @@ export default function Index() {
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">精選熱門課程</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              從數千門課程中精心挑選，這些是學員評價最高、最受歡迎的課程
+              從數千門課程中精心挑選，這些是學員���價最高、最受歡迎的課程
             </p>
           </div>
 
@@ -319,7 +319,7 @@ export default function Index() {
               <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Trophy className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">頂尖講師</h3>
+              <h3 className="text-xl font-semibold mb-2">��尖講師</h3>
               <p className="text-muted-foreground">
                 來自業界的專家講解，分享實戰經驗與最新知識
               </p>

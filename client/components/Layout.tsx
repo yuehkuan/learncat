@@ -197,7 +197,7 @@ export default function Layout({ children }: LayoutProps) {
                     <Link to="/login">登入</Link>
                   </Button>
                   <Button size="sm" asChild>
-                    <Link to="/register">註冊</Link>
+                    <Link to="/register">���冊</Link>
                   </Button>
                 </div>
               )}
@@ -232,9 +232,7 @@ export default function Layout({ children }: LayoutProps) {
                 打造最優質的線上學習體驗，讓知識傳播無界限
               </p>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="icon">
-                  <Users className="h-4 w-4" />
-                </Button>
+                <Button variant="ghost" size="icon" />
               </div>
             </div>
 
@@ -271,7 +269,7 @@ export default function Layout({ children }: LayoutProps) {
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link to="/courses/programming" className="text-muted-foreground hover:text-primary transition-colors">
-                    程式���計
+                    程式設計
                   </Link>
                 </li>
                 <li>
@@ -303,7 +301,7 @@ export default function Layout({ children }: LayoutProps) {
                 </li>
                 <li>
                   <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                    聯��我們
+                    聯絡我們
                   </Link>
                 </li>
                 <li>
@@ -321,7 +319,7 @@ export default function Layout({ children }: LayoutProps) {
           </div>
 
           <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 學習無界. 版權所有.</p>
+            <p>&copy; 2025 學習無界. 版權所有.</p>
           </div>
         </div>
       </footer>
